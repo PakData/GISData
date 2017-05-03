@@ -1,0 +1,25 @@
+{
+  "name": "update-data",
+  "version": "0.1.0",
+  "description": "Update GIS data from external sources",
+  "main": "update-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PakData/GISData.git"
+  },
+  "author": "hazrmard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PakData/GISData/issues"
+  },
+  "homepage": "https://github.com/PakData/GISData#readme",
+  "dependencies": {
+    "glob": "^7.1.1",
+    "shapefile": "^0.6.2",
+    "unzip": "^0.1.11"
+  },
+  "devDependencies": {}
+}
