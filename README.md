@@ -13,7 +13,7 @@ Files contain boundaries on 4 levels:
 * 2 - Division
 * 3 - District
 
-Each file is labeled accoring to it's level for e.g. `PAK-TopoJSON/PAK_adm1.json`
+Each file is labeled accoring to it's level for e.g. `PAK-GeoJSON/PAK_adm1.json`
 contains provincial boundaries.
 
 ## Updating
