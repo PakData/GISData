@@ -1,7 +1,7 @@
 # GISData
 Geographical data files for Pakistan.
 
-This repository contains shapefiles and TopoJSON files for Pakistan.
+This repository contains shapefiles and GeoJSON files for Pakistan.
 
 
 ## Heirarchy
@@ -13,7 +13,7 @@ Files contain boundaries on 4 levels:
 * 2 - Division
 * 3 - District
 
-Each file is labeled accoring to it's level for e.g. `PAK-TopoJSON/PAK_adm1.json`
+Each file is labeled accoring to it's level for e.g. `PAK-GeoJSON/PAK_adm1.json`
 contains provincial boundaries.
 
 ## Updating
@@ -37,7 +37,7 @@ Updates depend on how frequently to original database is changed.
 
 More information on shape files can be found [here][1].
 
-More information on TopoJSON files can be found [here][2].
+More information on GeoJSON files can be found [here][2].
 
 These files can be visualezed at [mapshaper][4].
 
@@ -47,6 +47,6 @@ These files can be visualezed at [mapshaper][4].
 The data files were obtained from the [Global Administrative Boundaries Database][3].
 
 [1]: https://en.wikipedia.org/wiki/Shapefile
-[2]: https://github.com/topojson/topojson
+[2]: https://en.wikipedia.org/wiki/GeoJSON
 [3]: http://gadm.org
 [4]: http://mapshaper.org/
