@@ -67,7 +67,7 @@ var command = process.platform === 'win32' ? 'shp2json.cmd ' : 'shp2json ';
 
 var zipFile = country + '.zip';
 var shapeDir = country + '-SHP';
-var jsonDir = country + '-TopoJSON';
+var jsonDir = country + '-GeoJSON';
 
 
 // download country specific .zip file
