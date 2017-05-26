@@ -19,7 +19,8 @@ contains provincial boundaries.
 ## Updating
 
 To update this data set, first install the `update-data.js` script. You will
-need to have *Node.js* installed.
+need to have *Node.js* installed. Additionally the `shapefile` node module
+should be globally installed.
 
 ```
 > npm install .
@@ -32,6 +33,11 @@ After installation you can run the script
 ```
 
 Updates depend on how frequently to original database is changed.
+
+## Reducing File Size
+
+The detail in the GeoJSON files can be reduced which shrinks files. Use
+[simplify-geojson][5] package to simplify the downloaded GeoJSON files.
 
 ## More
 
@@ -50,3 +56,4 @@ The data files were obtained from the [Global Administrative Boundaries Database
 [2]: https://en.wikipedia.org/wiki/GeoJSON
 [3]: http://gadm.org
 [4]: http://mapshaper.org/
+[5]: https://www.npmjs.com/package/simplify-geojson

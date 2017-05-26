@@ -7,7 +7,7 @@ Installation:
 
 Browse to repository's directory, then:
 
-  > nmp install .
+  > npm install .
 
 Usage:
 
@@ -22,8 +22,10 @@ The resulting directory structure is:
   ./
   COUNTRY-SHP/
   ....  shapefiles
-  COUNTRY-TopoJSON/
+  COUNTRY-GeoJSON/
   ....  json files
+
+The GeoJSON files can be simplified by using simplify-geojson (a node package).
 */
 
 
