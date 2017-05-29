@@ -1,7 +1,7 @@
 # GISData
 Geographical data files for Pakistan.
 
-This repository contains shapefiles and GeoJSON files for Pakistan.
+This repository contains shapefiles and Topo/Geo-JSON files for Pakistan.
 
 
 ## Heirarchy
@@ -15,6 +15,8 @@ Files contain boundaries on 4 levels:
 
 Each file is labeled accoring to it's level for e.g. `PAK-GeoJSON/PAK_adm1.json`
 contains provincial boundaries.
+
+Topologies in TopoJSON files are stored under the object names: `adm0`, `adm1` ...
 
 ## Updating
 
