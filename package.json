@@ -18,8 +18,10 @@
   "homepage": "https://github.com/PakData/GISData#readme",
   "dependencies": {
     "glob": "^7.1.1",
-    "shapefile": "^0.6.2",
+    "shapefile": "^0.6.6",
+    "simplify-geojson": "^1.0.3",
     "topojson-server": "^3.0.0",
+    "topojson-simplify": "^3.0.2",
     "unzip": "^0.1.11"
   },
   "devDependencies": {}

@@ -6,20 +6,49 @@
     <title>PakData GIS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <style>
+    body {
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        margin: 0px;
+    }
+    svg {
+        width: 100%;
+        height: 100vh;
+        vertical-align: top
+    }
+    div.settings {
+        background-color: ghostwhite;
+        position: absolute;
+        vertical-align: top;
+    }
+    div.info {
+        position: absolute;
+        display: none;
+        background-color: deepskyblue;
+        word-wrap: break-word;
+    }
+    svg path:hover {
+        stroke: aqua;
+        fill: aquamarine;
+    }
+    </style>
 </head>
-<body style="width: 100%; height: 100%; background-color: grey; margin: 0px;">
-    <div class="settings" style="background-color: ghostwhite; position: absolute; vertical-align: top;">
+<body>
+    <div class="settings">
         <input type="radio" name="level" value="adm0" checked="checked"><label for="adm0">adm0</label>
         <input type="radio" name="level" value="adm1"><label for="adm1">adm1</label>
         <input type="radio" name="level" value="adm2"><label for="adm2">adm2</label>
         <input type="radio" name="level" value="adm3"><label for="adm3">adm3</label>
     </div>
-    <div class="info" style="position: absolute; display: none; background-color: deepskyblue"></div>
-    <svg style="width: 100%; height: 100vh; vertical-align: top"></svg>
+    <div class="info" style=""></div>
     
+    <!-- The svg element on which map is drawn -->
+    <svg></svg>
     
-    <script>
-    
+    <script>    
     // requests a GeoJSON file and plots
     function plotMap(level) {
         d3.json("/PAK-GeoJSON/PAK_" + level + ".json").then(d => {
@@ -32,7 +61,7 @@
 
         // removing existing paths
         svg.selectAll("path")
-              .remove()
+              .remove();
         // plotting anew
         svg.selectAll("path")
               .data(d.features)
@@ -40,14 +69,17 @@
               .append("path")
                 .attr("stroke", "#fff")
                 .attr("d", path)
-              .on("mousedown", (data, i, paths) => {
+              .on("mousedown", (feature, i, paths) => {
                   var loc = d3.mouse(document.getElementsByTagName("body")[0]);
-                  console.log(d3.event);
                   info.style("display", "block")
                       .style("top", loc[1] + "px")
                       .style("left", loc[0] + "px")
-                      .style("width", "10vw")
-                      .style("height", "10vh");
+                      .html("<pre><code>" + 
+                             feature.properties.NAME_0 + "\n" +
+                             (feature.properties.NAME_1 || "") + "\n" +
+                             (feature.properties.NAME_2 || "") + "\n" +
+                             (feature.properties.NAME_3 || "") + "\n" +
+                            "</code></pre>");
               });
         });
     }
@@ -58,13 +90,13 @@
     var svg = d3.select("svg");
     var info = d3.select(".info");
 
-    // adding event listeners for options
+    // adding event listeners for options. Clicking a radio button plots map.
     d3.selectAll("input")
         .on("click", (data, i, inputs) => {
             plotMap(inputs[i].value);
         })
     
-    // event listener for info div
+    // event listener for info div when mouse leaves
     info.on("mouseleave", () => {
             info.style("display", "none");
         });
