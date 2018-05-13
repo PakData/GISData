@@ -51,7 +51,7 @@
     <script>    
     // requests a GeoJSON file and plots
     function plotMap(level) {
-        d3.json("/PAK-GeoJSON/PAK_" + level + ".json").then(d => {
+        d3.json("PAK-GeoJSON/PAK_" + level + ".json").then(d => {
         
         var projection = d3.geoMercator()
                              .fitSize([width, height], d);
