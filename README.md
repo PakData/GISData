@@ -21,8 +21,8 @@ Topologies in TopoJSON files are stored under the object names: `adm0`, `adm1` .
 ## Updating
 
 To update this data set, first install the `update-data.js` script. You will
-need to have *Node.js* installed. Additionally the `shapefile` node module
-should be globally installed.
+need to have *Node.js* installed. Additionally the `shapefile` and `topojson-server`
+node modules should be globally installed.
 
 ```
 > npm install .
@@ -35,6 +35,9 @@ After installation you can run the script
 ```
 
 Updates depend on how frequently to original database is changed.
+
+GeoJSON files can be simplified by using `simplify-geojson` (a node package).
+TopoJSON files can be simplified by using `topojson-simplify` (a node package).
 
 ## Reducing File Size
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PakData GIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body style="width: 100%; height: 100%; background-color: grey; margin: 0px;">
+    <div class="settings" style="background-color: ghostwhite; position: absolute; vertical-align: top;">
+        <input type="radio" name="level" value="adm0" checked="checked"><label for="adm0">adm0</label>
+        <input type="radio" name="level" value="adm1"><label for="adm1">adm1</label>
+        <input type="radio" name="level" value="adm2"><label for="adm2">adm2</label>
+        <input type="radio" name="level" value="adm3"><label for="adm3">adm3</label>
+    </div>
+    <div class="info" style="position: absolute; display: none; background-color: deepskyblue"></div>
+    <svg style="width: 100%; height: 100vh; vertical-align: top"></svg>
+    
+    
+    <script>
+    
+    // requests a GeoJSON file and plots
+    function plotMap(level) {
+        d3.json("/PAK-GeoJSON/PAK_" + level + ".json").then(d => {
+        
+        var projection = d3.geoMercator()
+                             .fitSize([width, height], d);
+
+        var path = d3.geoPath()
+                       .projection(projection);
+
+        // removing existing paths
+        svg.selectAll("path")
+              .remove()
+        // plotting anew
+        svg.selectAll("path")
+              .data(d.features)
+              .enter()
+              .append("path")
+                .attr("stroke", "#fff")
+                .attr("d", path)
+              .on("mousedown", (data, i, paths) => {
+                  var loc = d3.mouse(document.getElementsByTagName("body")[0]);
+                  console.log(d3.event);
+                  info.style("display", "block")
+                      .style("top", loc[1] + "px")
+                      .style("left", loc[0] + "px")
+                      .style("width", "10vw")
+                      .style("height", "10vh");
+              });
+        });
+    }
+
+    // setting up initial variables
+    var width = document.getElementsByTagName("body")[0].clientWidth;
+    var height = document.getElementsByTagName("body")[0].clientHeight;
+    var svg = d3.select("svg");
+    var info = d3.select(".info");
+
+    // adding event listeners for options
+    d3.selectAll("input")
+        .on("click", (data, i, inputs) => {
+            plotMap(inputs[i].value);
+        })
+    
+    // event listener for info div
+    info.on("mouseleave", () => {
+            info.style("display", "none");
+        });
+    
+    plotMap("adm0");
+        
+    </script>
+    
+</body>
+</html>
