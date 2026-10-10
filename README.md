@@ -34,10 +34,10 @@ convert between formats on the client side.
     features: [
         {
             type: Feature,
-            // a feature for admX has X+1 features of type NAME_0,...,NAME_X-1
+            // a feature for admX has properties COUNTRY and NAME_1,...,NAME_X
             // corresponding to the geographic division names
             properties: {
-                NAME_0: Pakistan,
+                COUNTRY: Pakistan,
                 NAME_1: Baluchistan,
                 NAME_2: Quetta,
                 ...
@@ -69,10 +69,10 @@ convert between formats on the client side.
             geometries: [
                 {
                     type: MultiPolygon,
-                    // a feature for admX has X+1 features of type NAME_0,...,
-                    // NAME_X-1 corresponding to the geographic division names
+                    // a feature for admX has properties COUNTRY and NAME_1,...,
+                    // NAME_X corresponding to the geographic division names
                     properties: {
-                        NAME_0: Pakistan,
+                        COUNTRY: Pakistan,
                         NAME_1: Baluchistan,
                         NAME_2: Quetta,
                         ...
@@ -94,7 +94,7 @@ convert between formats on the client side.
 ## Updating
 
 To update this data set, first install the `update-data.js` script. You will
-need to have *Node.js* installed.
+need to have a recent version of *Node.js* installed (tested with Node 22).
 
 ```
 > npm install .
@@ -133,7 +133,12 @@ These files can be visualized at [mapshaper][4].
 
 ## Acknowledgements
 
-The data files were obtained from the [Global Administrative Boundaries Database][3].
+The data files were obtained from the [Global Administrative Boundaries Database][3]
+(GADM version 4.1).
+
+Note that GADM 4.1 differs from 3.6 in naming and properties: e.g.
+`Balochistan` instead of `Baluchistan`, `Khyber-Pakhtunkhwa` instead of
+`N.W.F.P.`, and features carry `COUNTRY` rather than `NAME_0`.
 
 [1]: https://en.wikipedia.org/wiki/Shapefile
 [2]: https://en.wikipedia.org/wiki/GeoJSON
