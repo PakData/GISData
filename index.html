@@ -75,7 +75,7 @@
                       .style("top", loc[1] + "px")
                       .style("left", loc[0] + "px")
                       .html("<pre><code>" + 
-                             feature.properties.NAME_0 + "\n" +
+                             (feature.properties.COUNTRY || "") + "\n" +
                              (feature.properties.NAME_1 || "") + "\n" +
                              (feature.properties.NAME_2 || "") + "\n" +
                              (feature.properties.NAME_3 || "") + "\n" +
